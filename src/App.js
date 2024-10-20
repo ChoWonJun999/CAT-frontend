@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './styles/App.css';
 
-function App() {
+import Login from './features/auth/Login';
+import Singup from './features/auth/Singup';
+
+import MainLayout from './components/layout/MainLayout';
+import Home from './pages/Home';
+import History from './pages/History';
+import Trade from './pages/Trade';
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<div className="loadingTag">Loading...</div>}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/singup" element={<Singup />} />
+
+          <Route
+            path=""
+            element={
+              <MainLayout
+                data={[
+                  { path: '/', name: '전체 계좌 조회' },
+                  { path: '/history', name: '거래 내역' },
+                  { path: '/trade', name: 'Auto Trade' },
+                ]}
+              />
+            }
+          >
+            <Route path="" element={<Home />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/trade" element={<Trade />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;

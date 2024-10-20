@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --upbit-blue-light: #1e8cff;
+  --upbit-blue-dark: #0045b5;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Pretendard-Regular, sans-serif;
+  text-align: -webkit-center;
+  align-items: center;
+}
+
+body,
+#root {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+form {
+  display: inline-grid;
+}
